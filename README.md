@@ -1,24 +1,18 @@
-# README
+# Tutoree Web Application System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Website Development Tools
 
-Things you may want to cover:
+Ruby version - 3.1.2p20 (2022-04-12 revision 4491bb740a)
 
-* Ruby version
+Rails version - 7.0.4
 
-* System dependencies
+Mongoid version - 8.0.2
 
-* Configuration
 
-* Database creation
+### System dependencies
 
-* Database initialization
+Webpacker version - 5.4.3
 
-* How to run the test suite
+Yarn version - 1.22.19
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Node.js version - 16.13.2
