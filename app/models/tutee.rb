@@ -1,4 +1,6 @@
 class Tutee
+  has_one :user
+  has_many :post
   include Mongoid::Document
   include Mongoid::Timestamps
   field :first_name, type: String

@@ -1,4 +1,5 @@
 class User
+  belongs_to :user_type
   include Mongoid::Document
   include Mongoid::Timestamps
   field :email_address, type: String

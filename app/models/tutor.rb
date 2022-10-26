@@ -1,4 +1,5 @@
 class Tutor
+  has_one :user
   include Mongoid::Document
   include Mongoid::Timestamps
   field :first_name, type: String

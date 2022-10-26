@@ -1,4 +1,5 @@
 class Post
+  belongs_to :tutee
   include Mongoid::Document
   include Mongoid::Timestamps
   field :post_name, type: String
