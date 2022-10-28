@@ -14,7 +14,7 @@ development:
       # # of host:port pairs. (required)
       # hosts:
       #   - localhost:27017
-      uri: mongodb+srv://root:root@mytutoree.6yct3rl.mongodb.net/firstDatabase?retryWrites=true&w=majority
+      uri: mongodb+srv://root:root@mytutoree.6yct3rl.mongodb.net/tutoree_database?retryWrites=true&w=majority
       
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
@@ -132,7 +132,7 @@ development:
       options:
         read:
           mode: :primary
-        max_pool_size: 1
+        max_pool_size: 3
 
     # Application name that is printed to the mongodb logs upon establishing
     # a connection in server versions >= 3.4. Note that the name cannot
