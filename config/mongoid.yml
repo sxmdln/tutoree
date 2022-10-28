@@ -15,6 +15,7 @@ development:
       # hosts:
       #   - localhost:27017
       uri: mongodb+srv://sam:Rootintutoree1%21@tutoree.trypnls.mongodb.net/firstDatabase?retryWrites=true&w=majority
+      
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
         # Please refer to the driver documentation of the version of the mongo gem you are using
@@ -33,29 +34,29 @@ development:
         #     - use: web
 
         # The name of the user for authentication.
-        # user: 'user'
+        user: 'sam'
 
         # The password of the user for authentication.
-        # password: 'password'
+        password: 'root'
 
         # The user's database roles.
-        # roles:
-        #   - 'dbOwner'
+        roles:
+          - 'dbOwner'
 
         # Change the default authentication mechanism. Valid options are: :scram,
         # :mongodb_cr, :mongodb_x509, and :plain. Note that all authentication
         # mechanisms require username and password, with the exception of :mongodb_x509.
         # Default on mongoDB 3.0 is :scram, default on 2.4 and 2.6 is :plain.
-        # auth_mech: :scram
+        auth_mech: :scram
 
         # The database or source to authenticate the user against.
         # (default: the database specified above or admin)
-        # auth_source: admin
+        auth_source: admin
 
         # Force a the driver cluster to behave in a certain manner instead of auto-
         # discovering. Can be one of: :direct, :replica_set, :sharded. Set to :direct
         # when connecting to hidden members of a replica set.
-        # connect: :direct
+        connect: :direct
 
         # Changes the default time in seconds the server monitors refresh their status
         # via hello commands. (default: 10)
@@ -120,12 +121,24 @@ development:
 
   # Configure Mongoid specific options. (optional)
   options:
+    app_name: Tutoree
+
+  test:
+  clients:
+    default:
+      database: firstDatabase
+      hosts:
+        - localhost:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
+
     # Application name that is printed to the mongodb logs upon establishing
     # a connection in server versions >= 3.4. Note that the name cannot
     # exceed 128 bytes. It is also used as the database name if the
     # database name is not explicitly defined. (default: nil)
-    # app_name: MyApplicationName
-    
+        
     # Mark belongs_to associations as required by default, so that saving a
     # model with a missing belongs_to association will trigger a validation
     # error. (default: true)
@@ -174,13 +187,4 @@ development:
     # indexes in the background by default. (default: false)
     # background_indexing: false
 
-test:
-  clients:
-    default:
-      database: firstDatabase
-      hosts:
-        - localhost:27017
-      options:
-        read:
-          mode: :primary
-        max_pool_size: 1
+
