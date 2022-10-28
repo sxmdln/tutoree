@@ -1,5 +1,5 @@
 class AcceptedTutee
-  has_one :tutor
+  belongs_to :tutor
   belongs_to :tutee
   include Mongoid::Document
   include Mongoid::Timestamps

@@ -1,5 +1,6 @@
 class Tutor
-  has_one :user
+  belongs_to :user_type
+  has_one :accepted_tutee
   include Mongoid::Document
   include Mongoid::Timestamps
   field :first_name, type: String

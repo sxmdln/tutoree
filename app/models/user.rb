@@ -1,7 +1,8 @@
 class User
-  belongs_to :user_type
+  #has_one :user_type 
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ActiveModel::Validations
   field :email_address, type: String
   field :contact_number, type: String
   field :string, type: String
