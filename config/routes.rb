@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 	resources :tutees
   # Defines the root path route ("/")
   # root "articles#index"
-	get "/login", to: "users#login"
-	post "/login", to: "users#create_login"
+	get "/", to: "users#index" #landing page
+	get "/login", to: "users#login" #login page
+	get "/new", to: "users#new"
+	post "/login", to: "users#create_login" #auth
 end

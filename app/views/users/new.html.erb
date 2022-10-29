@@ -40,23 +40,11 @@
 			  </div>
 			  <div class="card-body cardbody-color p-lg-5 ">
 				<div class="text-center mb-3"/>
-					<p class='fs-1'>Sign in</p>
+					<p class='fs-1'>Sign Up</p>
 				</div>
-				<%= form_with url: "/login" do |form| %>
-				<div class="mb-3">
-					<p> <%= form.text_field :email_address, class: 'form-control', placeholder: 'Email' %><p>
-				</div>
-				<div class="mb-3">
-					<p> <%= form.password_field :password, class: 'form-control', placeholder: 'Password' %><p>	 
-				</div>
-				<div class="text-center">
-					<%= notice %>
-					<%= form.submit :login, class: 'btn btn-dark px-5 mb-5 w-100', value: 'Login'  %>
-				</div>
-				<% end %>
-				<div id="emailHelp" class="form-text text-center mb-5 text-dark">Not
-				  Registered? <a href="/new" class="text-dark fw-bold"> Create an
-					Account</a>
+				<%= render 'form', user: @user %>
+				
+				<div id="emailHelp" class="form-text text-center mb-5 text-dark">Already have an account? <a href="/login" class="text-dark fw-bold"> Login here</a>
 				</div>
 			  </div>
 			</div>
@@ -66,3 +54,6 @@
 	  </div>
   </body>
 </html>
+
+
+
