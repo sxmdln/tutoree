@@ -1,8 +1,7 @@
 class Tutor
-  belongs_to :user_type
-  has_one :accepted_tutee
   include Mongoid::Document
   include Mongoid::Timestamps
+
   field :first_name, type: String
   field :last_name, type: String
   field :profile_picture, type: String
@@ -17,4 +16,7 @@ class Tutor
   field :number_of_tutees, type: Integer
   field :is_active, type: Mongoid::Boolean
   field :payment_info, type: String
+
+  belongs_to :user_type
+  has_one :accepted_tutee
 end
