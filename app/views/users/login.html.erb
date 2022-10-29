@@ -1,7 +1,68 @@
-<h2> Login </h2>
-<%= form_with url: "/login" do |form| %>
-	Email<p> <%= form.text_field :email_address %><p>
-	Password<p> <%= form.password_field :password %><p>
-	<%= form.submit :login %>
-<% end %>
-<%= notice %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tutoree</title>
+	<style>
+	*{	
+	outline:0px dashed red;
+	}
+	html{
+		margin:0;
+		padding:0;
+		
+	}
+	body{
+		background-color: #3a124b;
+	}
+	.profile-image-pic{
+		height: 200px;
+		width: 200px;
+		object-fit: cover;
+		}
+	.cardbody-color{
+		background-color: white;
+	}
+
+	a{
+		text-decoration: none;
+	}
+	</style>
+  </head>
+
+  <body>
+	  <div class="container">
+		<div class="row">
+		  <div class="col-md-4 offset-md-4 ">
+			<div class="card my-5 shadow p-0 mb-5 bg-body rounded">
+			  <div class="text-center">
+				<img src="https://attracttour.com/wp-content/uploads/2022/10/image-183.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                width="200px" alt="profile">
+			  </div>
+			  <div class="card-body cardbody-color p-lg-5 ">
+				<div class="text-center mb-3"/>
+					<p class='fs-1'>Sign in</p>
+				</div>
+				<%= form_with url: "/login" do |form| %>
+				<div class="mb-3">
+					<p> <%= form.text_field :email_address, class: 'form-control', placeholder: 'Email' %><p>
+				</div>
+				<div class="mb-3">
+					<p> <%= form.password_field :password, class: 'form-control', placeholder: 'Password' %><p>	 
+				</div>
+				<div class="text-center">
+					<%= notice %>
+					<%= form.submit :login, class: 'btn btn-dark px-5 mb-5 w-100', value: 'Login'  %>
+				</div>
+				<% end %>
+				<div id="emailHelp" class="form-text text-center mb-5 text-dark">Not
+				  Registered? <a href="#" class="text-dark fw-bold"> Create an
+					Account</a>
+				</div>
+			  </div>
+			</div>
+
+		  </div>
+		</div>
+	  </div>
+  </body>
+</html>

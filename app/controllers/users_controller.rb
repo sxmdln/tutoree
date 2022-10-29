@@ -4,11 +4,13 @@ class UsersController < ApplicationController
 	end
 	def create_login
 		user = User.find_by(email_address: params[:email_address])
-			
-		if user.exists? && user.authenticate(params[:password])
-			redirect_to '#', notice: 'success'		
+		
+		if user && user.authenticate(params[:password])
+			redirect_to '/login', notice: 'success'
 		else
-			redirect_to '#', notice: 'fail'				
-		end			
+			
+			redirect_to '/login', notice: 'fail'
+		end
+
 	end
 end
