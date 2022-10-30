@@ -5,14 +5,18 @@ class UsersController < ApplicationController
 		#@users = User.all
 	end
 	def create_login
-		user = User.find_by(email_address: params[:email_address])
+		user = User.find_by(:email_address => params[:email_address])
 		
-		if user && user.authenticate(params[:password])
-			redirect_to '/login', notice: 'success'
-		else
-			
-			redirect_to '/login', notice: 'fail'
-		end
+		if !user
+        #    render json: {msg: 'Incorrect Username'}, status: :unprocessable_entity
+        	return true
+        end
+	#	isAuth = user.try(:authenticate, params[:password])
+        if user && user.authenticate(params[:password])
+            render json: {msg: 'Success', user: user}, status: :ok
+        else
+            render json: {msg: 'Incorrect Password', user: user.password_digest }, status: :unprocessable_entity
+        end
 
 	end
 	def new
@@ -21,7 +25,8 @@ class UsersController < ApplicationController
 	 
 	def create
 		@user = User.new(user_params)
-		@user.password_digest = BCrypt::Password.create(@user.password_digest)
+		@user.password_digest = BCrypt::Password.create(@user.password)
+		#@user.password_digest = params[:password]
 		respond_to do |format|
 			if @user.save
 			  format.html { redirect_to '/login', notice: "User was successfully created." }
@@ -37,6 +42,6 @@ class UsersController < ApplicationController
 		end
 
 		def user_params
-			params.require(:user).permit(:email_address, :password_digest)
+			params.require(:user).permit(:email_address, :password)
 		end
 end

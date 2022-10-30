@@ -1,5 +1,9 @@
 development:
   # Configure available database clients. (required)
+  session:
+
+    option:
+      raise_not_found_error: false
   clients:
     # Defines the default client. (required)
     default:
@@ -15,7 +19,7 @@ development:
       # hosts:
       #   - localhost:27017
       uri: mongodb+srv://root:root@mytutoree.6yct3rl.mongodb.net/tutoree_database?retryWrites=true&w=majority
-      
+  
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
         # Please refer to the driver documentation of the version of the mongo gem you are using
@@ -32,7 +36,7 @@ development:
         #   mode: :secondary_preferred
         #   tag_sets:
         #     - use: web
-
+        
         # The name of the user for authentication.
         user: 'root'
 
@@ -118,7 +122,6 @@ development:
         
         # Whether to truncate long log lines. (default: true)
         # truncate_logs: true
-
   # Configure Mongoid specific options. (optional)
   #options:
   #  app_name: Tutoree
@@ -168,7 +171,7 @@ development:
 
     # Raise an error when performing a #find and the document is not found.
     # (default: true)
-    # raise_not_found_error: true
+    # raise_not_found_error: false
 
     # Raise an error when defining a scope with the same name as an
     # existing method. (default: false)
@@ -187,5 +190,3 @@ development:
     # (Deprecated) In MongoDB 4.0 and earlier, set whether to create
     # indexes in the background by default. (default: false)
     # background_indexing: false
-
-
