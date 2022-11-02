@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	def index 
+		puts Tutee.all
 	end
 	def login
 	end
@@ -9,25 +10,29 @@ class UsersController < ApplicationController
         	return true
         end
         if user && user.authenticate(params[:password])
-            render json: {msg: 'Success', user: user}, status: :ok
+			redirect_to '/login', notice: "success!"
         else
-            render json: {msg: 'Incorrect Password', user: user.password_digest }, status: :unprocessable_entity
+            redirect_to '/login', notice: "fail!"
         end
 
 	end
 	def new
 		@user = User.new
+		puts @user.tutee
 	end
 	 
 	def create
 		@user = User.new(user_params)
+
 		@user.password_digest = BCrypt::Password.create(@user.password)
+		
 		respond_to do |format|
-			if @user.save
-			  format.html { redirect_to '/login', notice: "User was successfully created." }
+			if @user.save 
+				tutee = Tutee.create(_id: @user._id, user_id: @user.email_address)	
+				format.html { redirect_to '/login', notice: "User was successfully created."}
 			else
-			  format.html { render :new, status: :unprocessable_entity }
-			  format.json { render json: @user.errors, status: :unprocessable_entity }
+			  	format.html { render :new, status: :unprocessable_entity }
+			  	format.json { render json: @user.errors, status: :unprocessable_entity }
 			end
 		end
 	end
@@ -37,6 +42,6 @@ class UsersController < ApplicationController
 		end
 
 		def user_params
-			params.require(:user).permit(:email_address, :password)
+			params.require(:user).permit(:email_address, :password, :contact_number, :type)
 		end
 end
