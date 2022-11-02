@@ -7,10 +7,11 @@ class User
   field :password_digest, type: String
   field :contact_number, type: String
   field :is_active, type: Mongoid::Boolean
-  has_one :user_type
+  field :type, type: String
   validates :email_address, uniqueness: true
-  
+  validates :type, presence: true
   validates :password, presence: true, :length => { :minimum => 9}, :on => :create
   has_secure_password
-  
+  has_one :tutee
+  has_one :tutor
 end

@@ -2,7 +2,7 @@ class Tutee
 
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+  field :user_id, type: String
   field :first_name, type: String
   field :last_name, type: String
   field :profile_picture, type: String
@@ -13,11 +13,10 @@ class Tutee
   field :string, type: String
   field :matriculation_form, type: String
   field :string, type: String
-  field :average_rating, type: Decimal
+  field :average_rating, type: BigDecimal
   field :is_active, type: Mongoid::Boolean
   field :payment_info, type: String
 
-  belongs_to :user_type
-  has_many :post
+  belongs_to :user
   has_one :accepted_tutee
 end

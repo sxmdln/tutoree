@@ -1,9 +1,5 @@
 development:
   # Configure available database clients. (required)
-  session:
-
-    option:
-      raise_not_found_error: false
   clients:
     # Defines the default client. (required)
     default:
