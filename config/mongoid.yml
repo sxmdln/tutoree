@@ -14,7 +14,7 @@ development:
       # # of host:port pairs. (required)
       # hosts:
       #   - localhost:27017
-      uri: mongodb+srv://root:root@mytutoree.6yct3rl.mongodb.net/tutoree_database?retryWrites=true&w=majority
+      uri: process.env.MONGO_URI #mongodb+srv://root:root@mytutoree.6yct3rl.mongodb.net/tutoree_database?retryWrites=true&w=majority
   
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
