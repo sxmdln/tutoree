@@ -38,7 +38,7 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
-gem 'webpack', "~> 5.67.0"
+#gem 'webpack', "~> 5.67.0"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "mongoid", "~> 8.0.2"
