@@ -1,15 +1,40 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:wght@700&family=Jost&family=Katibeh&family=Nabla&family=Orelega+One&family=Patrick+Hand+SC&family=Quicksand:wght@500&display=swap');
+*{	
+outline:
+    0px dashed red;
+}   
+/* INDEX */
+
+body {
+            margin: 40px;
+            font-family: 'Quicksand', sans-serif;
+            background-color: white;
+        }
+#title {
+            font-family: 'Nabla', cursive;
+            font-size: 6em;
+        }
+.card-title {
+            font-family: 'Averia Sans Libre';
+            font-size: 30px;
+        }
+
+/* PAGES */
+
+.container-fluid {
+            padding: 20px;
+        }
+.profile-image-pic{
+            height: 200px;
+            width: 200px;
+            object-fit: cover;
+            }
+
+.cardbody-color{
+            background-color: #f5f5f5;
+        }
+
+a {
+            text-decoration: none;
+        }

@@ -1,67 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Sign up</title>
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:wght@700&family=Jost&family=Katibeh&family=Nabla&family=Orelega+One&family=Patrick+Hand+SC&family=Quicksand:wght@500&display=swap');
-        body {
-            margin: 40px;
-            font-family: 'Quicksand', sans-serif;
-            background-color: #fff6d0;
-        }
+
+<div class="text-center">
+  <a href="/">
+    <img src="https://attracttour.com/wp-content/uploads/2022/10/image-183.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"width="200px" alt="profile">
+  </a>
+</div>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-md-4 ">
+      <div class="card my-5 shadow p-0 mb-5 bg-body rounded">
+        <div class="card-body cardbody-color p-lg-5 ">
+          <div class="text-center mb-3">
+            <p class='fs-1'>Sign Up</p>
+          </div>
+          
+          <%= render 'form', user: @user %>
         
-        .container-fluid {
-            padding: 20px;
-        }
-
-        *{	
-        outline:
-            0px dashed red;
-        }
-
-        .profile-image-pic{
-            height: 200px;
-            width: 200px;
-            object-fit: cover;
-            }
-
-        .cardbody-color{
-            background-color: white;
-        }
-
-        a {
-            text-decoration: none;
-        }
-	</style>
-  </head>
-
-  <body>
-    <div class="text-center">
-		<a href="/">
-			<img src="https://attracttour.com/wp-content/uploads/2022/10/image-183.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"width="200px" alt="profile">
-		</a>
-	</div>
-	  <div class="container">
-		<div class="row">
-		  <div class="col-md-4 offset-md-4 ">
-			<div class="card my-5 shadow p-0 mb-5 bg-body rounded">
-
-			
-			  <div class="card-body cardbody-color p-lg-5 ">
-				<div class="text-center mb-3">
-					<p class='fs-1'>Sign Up</p>
-				</div>
-				<%= render 'form', user: @user %>
-				
-				<div id="emailHelp" class="form-text text-center mb-5 text-dark">Already have an account? <a href="/login" class="text-dark fw-bold"> Login here</a>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </div>
-  </body>
-</html>
+          <div class="form-text text-center mb-5 text-dark"> Already have an account? 
+          <a href="/login" class="text-dark fw-bold"> Login here</a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
