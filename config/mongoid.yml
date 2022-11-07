@@ -1,5 +1,6 @@
 development:
   # Configure available database clients. (required)
+  
   clients:
     # Defines the default client. (required)
     default:
@@ -119,20 +120,23 @@ development:
         # Whether to truncate long log lines. (default: true)
         # truncate_logs: true
   # Configure Mongoid specific options. (optional)
-  #options:
-  #  app_name: Tutoree
-
- # test:
-  #clients:
-  #  default:
-  #    database: tutoree_database
- #     hosts:
-  #      - localhost:27017
-      
- #     options:
- #       read:
- #         mode: :primary
-  #      max_pool_size: 3
+    
+  options:
+    raise_not_found_error: false
+     
+  test:
+    clients:
+      default:
+        database: tutoree_database
+        hosts:
+          - localhost:27017
+        
+        options:
+          read:
+            mode: :primary
+          max_pool_size: 3
+    options:
+      raise_not_found_error: false
 
     # Application name that is printed to the mongodb logs upon establishing
     # a connection in server versions >= 3.4. Note that the name cannot

@@ -6,7 +6,9 @@ class UsersController < ApplicationController
 	def create_login
 		user = User.find_by(:email_address => params[:email_address])	
 		if !user
+			render json: {msg: 'User does not exist'}, status: :unprocessable_entity
         	return true
+			
         end
         if user && user.authenticate(params[:password])
             render json: {msg: 'Success', user: user}, status: :ok
