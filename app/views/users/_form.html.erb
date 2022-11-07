@@ -20,7 +20,8 @@
             <p> <%= form.text_field :contact_number, class: 'form-control', placeholder: 'Contact Number' %><p>	 
         </div>
         <div class="mb-3">
-            <p> <%= form.text_field :type, class: 'form-control', placeholder: 'Type' %><p>	 
+            USER TYPE:
+            <p> <%= form.radio_button :type, 'tutor' %> Tutor</p><p><%= form.radio_button :type, 'tutee' %> Tutee</p>	 
         </div>
         <div class="text-center">
             <%= notice %>
