@@ -3,17 +3,24 @@ class UsersController < ApplicationController
 	end
 	def login
 	end
+	def dashboard
+	
+	end
+
 	def create_login
 		user = User.find_by(:email_address => params[:email_address])	
 		if !user
-			render json: {msg: 'User does not exist'}, status: :unprocessable_entity
+			#render json: {msg: 'User does not exist'}, status: :unprocessable_entity
+			redirect_to '/login', notice: 'does not exist'
         	return true
 			
         end
         if user && user.authenticate(params[:password])
-            render json: {msg: 'Success', user: user}, status: :ok
-        else
-            render json: {msg: 'Incorrect Password', user: user.password_digest }, status: :unprocessable_entity
+            #render json: {msg: 'Success', user: user}, status: :ok
+			redirect_to '/dashboard', notice: 'success!'
+        else 
+			redirect_to '/login', notice: 'user password does not match'
+            #render json: {msg: 'Incorrect Password', user: user.password_digest }, status: :unprocessable_entity
         end
 
 	end
