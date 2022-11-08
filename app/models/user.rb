@@ -3,16 +3,23 @@ class User
   include Mongoid::Timestamps
   include ActiveModel::SecurePassword
   include ActiveModel::Validations
+
   field :email_address, type: String
   field :password_digest, type: String
   field :contact_number, type: String
   field :is_active, type: Mongoid::Boolean
   field :type, type: String
+
   validates :email_address, uniqueness: true
   validates :contact_number, uniqueness: true
   validates :type, presence: true
   validates :password, presence: true, :length => { :minimum => 9}, :on => :create
+
   has_secure_password
-  has_one :tutee
-  has_one :tutor
+  has_many :tutees
+  has_many :tutors
+  accepts_nested_attributes_for :tutees
+  accepts_nested_attributes_for :tutors
 end
+
+

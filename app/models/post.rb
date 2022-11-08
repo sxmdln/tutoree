@@ -8,5 +8,5 @@ class Post
   field :is_accepted, type: Mongoid::Boolean
   field :date_posted, type: Time
 
-  belongs_to :tutee
+  belongs_to :user
 end
