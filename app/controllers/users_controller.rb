@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 	end
 	def login
 	end
+	def dashboard
+	end
 
 	def create_login
 		user = User.find_by(:email_address => params[:email_address])	

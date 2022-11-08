@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 	get "/", to: "users#index" #landing page
 	get "/login", to: "users#login" #login page
 	get "/new", to: "users#new"
-	get "/job_dashboard", to: "users#job_dashboard" # dashboard
+	get "/dashboard", to: "users#dashboard" # dashboard
 	get "/logout",to: "users#logout" #logout
 	post "/login", to: "users#create_login" #auth
 	
