@@ -5,9 +5,6 @@ class UsersController < ApplicationController
 	end
 	def login
 	end
-	def dashboard
-	
-	end
 
 	def create_login
 		user = User.find_by(:email_address => params[:email_address])	
@@ -28,6 +25,11 @@ class UsersController < ApplicationController
         end
 
 	end
+
+	def job_dashboard
+
+	end
+
 	def logout
 		session[:user_id] = nil
 		session[:is_type] = nil
@@ -42,10 +44,21 @@ class UsersController < ApplicationController
 		@user.password_digest = BCrypt::Password.create(@user.password)
 		respond_to do |format|
 			if @user.save
-			  format.html { redirect_to '/login', notice: "User was successfully created." }
+				if @user.type == "tutee"
+					tutee = Tutee.new(
+						user_id: @user._id
+					)
+					tutee.save!
+				elsif @user.type == "tutor"
+					tutor = Tutor.new(
+						user_id: @user._id
+					)
+					tutor.save!
+				end
+				format.html { redirect_to '/login', notice: "User was successfully created." }
 			else
-			  format.html { render :new, status: :unprocessable_entity }
-			  format.json { render json: @user.errors, status: :unprocessable_entity }
+				format.html { render :new, status: :unprocessable_entity }
+				format.json { render json: @user.errors, status: :unprocessable_entity }
 			end
 		end
 	end
@@ -55,6 +68,11 @@ class UsersController < ApplicationController
 		end
 
 		def user_params
-			params.require(:user).permit(:email_address, :password, :type, :contact_number)
+			params.require(:user).permit(
+				:email_address, :password, :type, :contact_number,
+				tutees_attributes: [:first_name, :last_name, :profile_picture, :birthdate, :address, :school_id, :matriculation_form],
+				tutors_attributes: [:first_name, :last_name, :profile_picture, :birthdate, :address, :occupation, :skill_category, :certification]
+			)
+)
 		end
 end
