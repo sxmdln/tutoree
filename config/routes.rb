@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 	get "/new", to: "users#new"
 	get "/dashboard", to: "users#dashboard" # dashboard
 	post "/login", to: "users#create_login" #auth
-
+	get "/logout",to: "users#logout" #logout
 end
