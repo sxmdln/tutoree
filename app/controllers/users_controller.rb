@@ -73,6 +73,5 @@ class UsersController < ApplicationController
 				tutees_attributes: [:first_name, :last_name, :profile_picture, :birthdate, :address, :school_id, :matriculation_form],
 				tutors_attributes: [:first_name, :last_name, :profile_picture, :birthdate, :address, :occupation, :skill_category, :certification]
 			)
-)
 		end
 end
