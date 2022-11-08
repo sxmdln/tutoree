@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	before_action :is_logged_in, except: [:login, :create_login, :logout, :index, :new, :create]
+	#before_action :is_admin, except: [:login, :create_login, :logout, :index, :create]
 	def index 
 	end
 	def login
@@ -17,12 +19,19 @@ class UsersController < ApplicationController
         end
         if user && user.authenticate(params[:password])
             #render json: {msg: 'Success', user: user}, status: :ok
+			session[:user_id] = user._id
+			session[:is_type] = user.type
 			redirect_to '/dashboard', notice: 'success!'
         else 
 			redirect_to '/login', notice: 'user password does not match'
             #render json: {msg: 'Incorrect Password', user: user.password_digest }, status: :unprocessable_entity
         end
 
+	end
+	def logout
+		session[:user_id] = nil
+		session[:is_type] = nil
+		redirect_to "/login", notice: "logout success"
 	end
 	def new
 		@user = User.new
