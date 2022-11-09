@@ -109,6 +109,15 @@
             </div>
           </div> 
         </div>
+        <div class="container py-2">
+          <div class="row">
+            <!--% @posts.each do |post| %-->        
+              <div class="col-3">
+                post.
+              </div>
+            <!--% end %-->
+          </div>
+        </div>
     </main>
     
     <main class="col-md-3 col-lg-3 px-md-4">
@@ -133,38 +142,21 @@
     </main>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- MODAL FOR CREATIGN POST! -->
-              <div class="modal fade" id="postsModal" tabindex="-1">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="postsModalLabel">Create a Post</h5>
-                    </div>
-                    <div class="modal-body">
-                      <!-- RENDER HERE -->Render
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Submit</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- end of modal -->
+<!-- modal -->
+<div class="modal fade" id="postsModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postsModalLabel">Create a Post</h5>
+      </div>
+    <div class="modal-body">
+      <!-- RENDER HERE -->Render
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- end of modal -->
