@@ -31,6 +31,12 @@
     background: #1e2024;
     border-left: 3px solid silver;
   }
+  *{
+    outline: 0px solid red;
+  }
+  .row{
+    color:white;
+  }
 	</style>
 
 <header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow">
@@ -45,43 +51,43 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
-          <li style="color:white">
+            <li style="color:white">
 
-              Welcome, <%= User.find(session[:user_id]).email_address %>!
+                Welcome, <%= User.find(session[:user_id]).email_address %>!
 
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/dashboard">
-              
-              Dashboard
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              
-              Jobs
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              
-              Messages
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/profile">
-              
-            My Profile
-            </a>
-          </li>
-		   <li class="nav-item">
-            <a class="nav-link" href="/logout">
-              
-				<b><span style="color: #b40606;">Logout</span></b>
-            </a>
-          </li>
-        </ul>
-
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/dashboard">
+                
+                Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                
+                Jobs
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                
+                Messages
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/profile">
+                
+              My Profile
+              </a>
+            </li>
+        <li class="nav-item">
+              <a class="nav-link" href="/logout">
+                
+          <b><span style="color: #b40606;">Logout</span></b>
+              </a>
+            </li>
+          </ul>
+      </div>
 
     </nav>
         <%# <% @posts.each do |post| %>
@@ -93,25 +99,72 @@
           </div>
          end  %>
     <%# ang current tutor maliit lng sya sa gilid para ang space sa gitna yung mga  %>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+    
+    <main class="col-md-7 col-lg-7 px-md-2">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
-        <h1 class="h2" style="color:white;">Dashboard</h1>
+        <h1 class="h2" style="color:white;">Posts</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#postsModal">Create</button>
+            </div>
+          </div> 
+        </div>
+    </main>
+    
+    <main class="col-md-3 col-lg-3 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
+        <h1 class="h2" style="color:white;">Current <% if User.find(session[:user_id]).type == "tutee" %>Tutor<% elsif User.find(session[:user_id]).type == "tutor" %>Tutee <%end%></h1>
       </div>
-      <div class="container py-3">
+      <div class="container py-2">
         <div class="row">
-          <div class="col-md-4" style="color:white">CURRENT TUTEE/TUTOR: <br>
-            <img src="https://attracttour.com/wp-content/uploads/2022/10/image-183.png" class="img profile-image-pic img-thumbnail rounded-circle my-2" width="200px" alt="profile">
-            <p style="color:white;">Caloocan Boy</p>
-          </div>
-          <div class="col-md-4">SUBJECT: <h1 class="h2" style="color: white;">POGI</h1></div>
-          <div class="col-md-4">DURATION:<h1 class="h3" style="color: white;">Starts at: September 26, 2022</h1> <h1 class="h3" style="color: white;">Ends at: September 27, 2022</h1></div>
+          Name: SAMPLE User
+        </div>  
+        <div class ="row"> 
+          <div class="col">SUBJECT: Sample</div>
+          <div class="col">RATE: $24/hr </div>
+        </div>
+        <div class ="row"> 
+          <div class="col">DURATION</div>
+          <div class="col">Starts at: September 26, 2022</div>
+          <div class="col">Ends at: September 27, 2022</div>
         </div>
       </div>
-      <div class="container py-3">
-        <div class="row">
-          <div class="col-md-4">RATE:<h1 class="h3" style="color: white;">$24/hr</h1> </div>
-        </div>
-      </div>
+      
     </main>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- MODAL FOR CREATIGN POST! -->
+              <div class="modal fade" id="postsModal" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="postsModalLabel">Create a Post</h5>
+                    </div>
+                    <div class="modal-body">
+                      <!-- RENDER HERE -->Render
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end of modal -->
