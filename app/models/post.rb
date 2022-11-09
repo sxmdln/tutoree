@@ -5,8 +5,8 @@ class Post
   field :post_name, type: String
   field :post_price, type: Decimal
   field :skill_category, type: String
-  field :is_accepted, type: Mongoid::Boolean
+  field :is_accepted, type: Mongoid::Boolean, default: false
   field :date_posted, type: Time
 
-  belongs_to :user
+  # belongs_to :tutee
 end

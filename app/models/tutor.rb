@@ -19,4 +19,5 @@ class Tutor
 
   belongs_to :user
   has_one :accepted_tutee
+  accepts_nested_attributes_for :accepted_tutee
 end

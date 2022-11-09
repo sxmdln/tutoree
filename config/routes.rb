@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 	get "/login", to: "users#login" #login page
 	get "/new", to: "users#new"
 	get "/dashboard", to: "users#dashboard" # dashboard
+	get "/posts", to: "posts#create_post"
+	get "/profile", to: "users#profile" # profile page
+	get "/messages", to: "users#messages" # messages
 	get "/logout",to: "users#logout" #logout
+	post "/posts", to: "posts#create_post" #create post
 	post "/login", to: "users#create_login" #auth
 	
 end

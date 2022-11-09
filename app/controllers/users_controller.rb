@@ -3,9 +3,15 @@ class UsersController < ApplicationController
 	#before_action :is_admin, except: [:login, :create_login, :logout, :index, :create]
 	def index 
 	end
+	
 	def login
 	end
-	def dashboard
+
+	def profile
+		@users = User.all
+	end
+
+	def edit
 	end
 
 	def create_login
@@ -13,8 +19,8 @@ class UsersController < ApplicationController
 		if !user
 			#render json: {msg: 'User does not exist'}, status: :unprocessable_entity
 			redirect_to '/login', notice: 'does not exist'
+
         	return true
-			
         end
         if user && user.authenticate(params[:password])
             #render json: {msg: 'Success', user: user}, status: :ok
@@ -28,8 +34,22 @@ class UsersController < ApplicationController
 
 	end
 
-	def job_dashboard
+	# def check_user
+	# 	if @user.type == "tutee"
+	# 		redirect_to action: 'dashboard'
+	# 	elsif @user.type == "tutor"
+	# 	end
+	# end
 
+	# def dashboard
+	# 	# tutee can only post jobs
+	# 	if @user.type == "tutee"
+	# 		@user = User.find(params[:post_id])
+	# 	elsif @user.type == "tutor"
+	# 	end
+	# end
+	
+	def messages
 	end
 
 	def logout
@@ -37,6 +57,7 @@ class UsersController < ApplicationController
 		session[:is_type] = nil
 		redirect_to "/login", notice: "logout success"
 	end
+	
 	def new
 		@user = User.new
 	end
@@ -64,6 +85,7 @@ class UsersController < ApplicationController
 			end
 		end
 	end
+
 	private
 		def set_user
 			@user = User.find(params[:id])

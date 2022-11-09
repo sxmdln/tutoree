@@ -10,7 +10,7 @@ class User
   field :is_active, type: Mongoid::Boolean
   field :type, type: String
 
-  validates :email_address, uniqueness: true
+  validates :email_address, uniqueness: true  # , format:{with: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]/}
   validates :contact_number, uniqueness: true
   validates :type, presence: true
   validates :password, presence: true, :length => { :minimum => 9}, :on => :create
