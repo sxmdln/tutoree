@@ -11,18 +11,30 @@
       </div>
     <% end %>
         <div class="mb-3">
-            <p> <%= form.text_field :email_address, class: 'form-control', placeholder: 'Email' %><p>
+            Email:<p> <%= form.text_field :email_address, class: 'form-control', placeholder: 'Email' %><p>
         </div>
         <div class="mb-3">
-            <p> <%= form.password_field :password, class: 'form-control', placeholder: 'Password' %><p>	 
+            First Name<p> <%= form.text_field :first_name, class: 'form-control', placeholder: 'First' %><p>
         </div>
         <div class="mb-3">
-            <p> <%= form.text_field :contact_number, class: 'form-control', placeholder: 'Contact Number' %><p>	 
+            Last Name:<p> <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last' %><p>
         </div>
+        <div class="mb-3">
+            Password:<p> <%= form.password_field :password, class: 'form-control', placeholder: 'Password' %><p>	 
+        </div>
+        <div class="mb-3">
+            Contact Number:<p><%= form.text_field :contact_number, class: 'form-control', placeholder: 'Contact Number' %><p>	 
+        </div>
+        
         <div class="mb-3">
             USER TYPE:
             <p> <%= form.radio_button :type, 'tutor' %> Tutor</p><p><%= form.radio_button :type, 'tutee' %> Tutee</p>	 
         </div>
+        <div class="mb-3">
+            Documents(Matriculaton/Certificate for tutors)<p><%= form.file_field :photo, accept: "image/png, image/jpeg", class: 'form-control' %><p>
+        <div >
+        <script>
+        </script>
         <div class="text-center">
             <%= notice %>
             <%= form.submit :register, class: 'btn btn-primary px-5 mb-5 w-100', value: 'Register' %>
