@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 	
 	def login
 	end
-
+	## users/id
 	def profile
-		@users = User.all
+		@user = User.find(params[:id])
 	end
 
 	def edit

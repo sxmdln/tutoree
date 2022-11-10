@@ -1,0 +1,64 @@
+<style>
+	body{
+		margin:0;
+		padding:0;
+		background:black;
+	}
+	.profile-image-pic{
+		height: 200px;
+		width: 200px;
+		object-fit: cover;
+		}
+	.cardbody-color{
+		background-color: white;
+	}
+
+	a{
+		text-decoration: none;
+	}
+    .nav-link:hover{
+        border-left: 3px solid white;
+        color:white;
+        background:#1f2022;
+    }
+	.navbar{
+		background:#1f2022;
+	}
+	.nav-link{
+		color: white;
+	}
+    main{
+        background: #1e2024;
+        border-left: 3px solid silver;
+    }
+</style>
+<ul class="nav flex-column">
+    <li style="color:white">
+        Welcome, <%= User.find(session[:user_id]).email_address %>!
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/dashboard">
+            Dashboard
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            Jobs
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            Messages
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/profile/<%= User.find(session[:user_id])._id %>">          
+            My Profile
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/logout"> 
+            <b><span style="color: #b40606;">Logout</span></b>
+        </a>
+    </li>
+</ul>
