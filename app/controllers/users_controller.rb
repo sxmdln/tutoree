@@ -68,15 +68,21 @@ class UsersController < ApplicationController
 		respond_to do |format|
 			if @user.save
 				if @user.type == "tutee"
-					tutee = Tutee.new(
-						user_id: @user._id
+					@user.tutees.create!(
+						user_id: @user._id,
+						first_name: params[:user][:first_name],
+						last_name: params[:user][:last_name],
+						matriculation_form: params[:user][:document]
+
 					)
-					tutee.save!
+					
 				elsif @user.type == "tutor"
-					tutor = Tutor.new(
-						user_id: @user._id
+					@user.tutors.create!(
+						user_id: @user._id,
+						first_name: params[:user][:first_name],
+						last_name: params[:user][:last_name],
+						certification: params[:user][:document]
 					)
-					tutor.save!
 				end
 				format.html { redirect_to '/login', notice: "User was successfully created." }
 			else

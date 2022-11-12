@@ -16,8 +16,8 @@ class User
   validates :password, presence: true, :length => { :minimum => 9}, :on => :create
 
   has_secure_password
-  has_many :tutees
-  has_many :tutors
+  has_one :tutees
+  has_one :tutors
   accepts_nested_attributes_for :tutees
   accepts_nested_attributes_for :tutors
 end

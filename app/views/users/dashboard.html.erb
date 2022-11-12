@@ -17,7 +17,9 @@
         <h1 class="h2" style="color:white;">Posts</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-              <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#postsModal">Create</button>
+              <% if User.find(session[:user_id]).type == 'tutee' %>
+                <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#postsModal">Create</button>
+              <%end%>
             </div>
           </div> 
         </div>
@@ -58,6 +60,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+      
         <h5 class="modal-title" id="postsModalLabel">Create a Post</h5>
       </div>
     <div class="modal-body">
