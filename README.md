@@ -19,4 +19,4 @@ Node.js version - 16.13.2
 
 ### GANTT Chart Progress: Week 6
 https://docs.google.com/spreadsheets/d/176vRYCkcu0mi1bGD2Mg3kDzGPMb43GW1biIA-3UBZQc/edit#gid=0
-![image](https://user-images.githubusercontent.com/57649092/200725720-3a1baeda-8a29-44d4-9cf5-3142f7d36976.png)
+![image](https://user-images.githubusercontent.com/57649092/201532678-62c070ab-5cf9-4678-9281-bbdd2eb0e185.png)
