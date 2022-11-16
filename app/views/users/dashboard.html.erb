@@ -24,12 +24,14 @@
           </div> 
         </div>
         <div class="container py-2">
-          <div class="row">
-            <!--% @posts.each do |post| %-->        
-              <div class="col-3">
-                post.
-              </div>
-            <!--% end %-->
+          <div class="row">   
+              <% @posts.each do |post| %>
+                <div class="col-3 m-2 p-2" style="color:white; border:1px solid white;">
+                  <%= post.post_name %><p>
+                  <%= post.skill_category %><p>
+                  <%= post.post_price %>
+                </div>
+              <% end %>
           </div>
         </div>
     </main>   
@@ -37,7 +39,7 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
         <h1 class="h2" style="color:white;">Current <% if User.find(session[:user_id]).type == "tutee" %>Tutor<% elsif User.find(session[:user_id]).type == "tutor" %>Tutee <%end%></h1>
       </div>
-      <div class="container py-2">
+      <div class="container py-2" style="color:white">
         <div class="row">
           Name: SAMPLE User
         </div>  
@@ -64,11 +66,11 @@
         <h5 class="modal-title" id="postsModalLabel">Create a Post</h5>
       </div>
     <div class="modal-body">
-      <!-- RENDER HERE -->Render
+      <!-- RENDER HERE -->
+      <%= render 'tutees/postform', post: @post %>
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Submit</button>
         </div>
       </div>
     </div>

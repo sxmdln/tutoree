@@ -33,7 +33,9 @@ class UsersController < ApplicationController
         end
 
 	end
-
+	def dashboard
+        @posts = Post.all
+    end
 	# def check_user
 	# 	if @user.type == "tutee"
 	# 		redirect_to action: 'dashboard'
@@ -72,6 +74,7 @@ class UsersController < ApplicationController
 						user_id: @user._id,
 						first_name: params[:user][:first_name],
 						last_name: params[:user][:last_name],
+						address: params[:user][:address],
 						matriculation_form: params[:user][:document]
 
 					)
@@ -81,6 +84,7 @@ class UsersController < ApplicationController
 						user_id: @user._id,
 						first_name: params[:user][:first_name],
 						last_name: params[:user][:last_name],
+						address: params[:user][:address],
 						certification: params[:user][:document]
 					)
 				end

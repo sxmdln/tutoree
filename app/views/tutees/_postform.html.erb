@@ -1,0 +1,18 @@
+<%= form_with(model: @post) do |form| %>
+        <div class="mb-3">
+            Post Name:<p> <%= form.text_field :post_name, class: 'form-control', placeholder: 'ex. Looking for Advance English Tutor' %><p>
+        </div>
+        <div class="mb-3">
+            Skill Category<p> <%= form.text_field :skill_category, class: 'form-control', placeholder: 'English' %><p>
+        </div>
+        <div class="mb-3">
+            Rate(PHP/hr):<p> <%= form.text_field :post_price, class: 'form-control', placeholder: '24' %><p>
+        </div>
+        <script>
+        </script>
+        <div class="text-center">
+            <%= notice %>
+            <%= form.submit :post, class: 'btn btn-primary px-5 mb-5 w-100', value: 'POST' %>
+        </div>
+  <% end %>
+  
