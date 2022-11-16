@@ -5,6 +5,11 @@ class UsersController < ApplicationController
 	end
 	
 	def login
+		if session[:user_id] == nil
+			return true
+		else
+			redirect_to '/dashboard'
+		end
 	end
 	## users/id
 	def profile
@@ -61,7 +66,12 @@ class UsersController < ApplicationController
 	end
 	
 	def new
-		@user = User.new
+		if session[:user_id] == nil
+			@user = User.new
+		else
+			redirect_to '/dashboard'
+		end
+		
 	end
 	 
 	def create
