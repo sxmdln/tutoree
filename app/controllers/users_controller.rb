@@ -70,7 +70,7 @@ class UsersController < ApplicationController
 		respond_to do |format|
 			if @user.save
 				if @user.type == "tutee"
-					@user.tutees.create!(
+					@user.create_tutees(
 						user_id: @user._id,
 						first_name: params[:user][:first_name],
 						last_name: params[:user][:last_name],
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 					)
 					
 				elsif @user.type == "tutor"
-					@user.tutors.create!(
+					@user.create_tutors(
 						user_id: @user._id,
 						first_name: params[:user][:first_name],
 						last_name: params[:user][:last_name],
