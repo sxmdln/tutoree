@@ -26,10 +26,17 @@
         <div class="container py-2">
           <div class="row">   
               <% @posts.each do |post| %>
-                <div class="col-3 m-2 p-2" style="color:white; border:1px solid white;">
-                  <%= post.post_name %><p>
-                  <%= post.skill_category %><p>
-                  <%= post.post_price %>
+                <div class="col m-2 p-2" style="color:white; border:1px solid white;">
+                  <div class="row">
+                    <div class="col-7">
+                      <%= post.post_name %> <p>
+                      <%= post.skill_category %> 
+                      <%= post.post_price %>
+                    </div>
+                    <div class="col-3">
+                      <button class="btn btn-primary">Apply</button>
+                    </div>
+                  </div>
                 </div>
               <% end %>
           </div>

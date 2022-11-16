@@ -3,7 +3,7 @@ class Post
   include Mongoid::Timestamps
   
   field :post_name, type: String
-  field :post_price, type: Decimal
+  field :post_price, type: Integer
   field :skill_category, type: String
   field :is_accepted, type: Mongoid::Boolean, default: false
   field :date_posted, type: Time
