@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 	get "/", to: "users#index" #landing page
 	get "/login", to: "users#login" #login page
 	get "/new", to: "users#new"
+	get "/verify", to: "users#verify"
 	get "/dashboard", to: "users#dashboard" # dashboard
 	get "/posts", to: "posts#create_post"
 	get "/profile/:id", to: "users#profile" # profile page

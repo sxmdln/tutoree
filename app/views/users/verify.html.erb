@@ -1,0 +1,55 @@
+<style>
+        /*
+    * Globals
+    */
+
+
+    /* Custom default button */
+    .btn-secondary,
+    .btn-secondary:hover,
+    .btn-secondary:focus {
+    color: #333;
+    text-shadow: none; /* Prevent inheritance from `body` */
+    }
+
+
+    /*
+    * Base structure
+    */
+
+    body {
+        padding:0;
+        margin:0;
+        text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+        
+    }
+
+    .cover-container {
+    max-width: 42em;
+    }
+
+    .d-flex{
+        background:black;
+    }
+</style>
+<body class="d-flex h-100 text-center text-white">
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <%= render 'layouts/navbar' %>
+
+  <main class="px-3 my-5 py-5">
+    <h1>Your account is not yet activated</h1>
+    <p class="lead">This process is not automated. Please wait for verification. DO NOT PM STAFF</p>
+    <p class="lead">
+      <a href="/logout" class="btn btn-outline-danger fw-bold ">Logout</a>
+    </p>
+  </main>
+
+
+</div>
+
+
+    
+  
+
+</body>

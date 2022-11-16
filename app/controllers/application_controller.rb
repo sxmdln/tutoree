@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
 			redirect_to "/dashboard", notice: "Forbidden"
 		end
 	end
+
+	def is_activated
+		if session[:user_id] !=nil && User.find(session[:user_id]).is_activated == false
+			redirect_to '/verify'
+		end
+	end
 end

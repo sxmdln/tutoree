@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	before_action :is_logged_in, except: [:login, :create_login, :logout, :index, :new, :create]
-	#before_action :is_admin, except: [:login, :create_login, :logout, :index, :create]
+	before_action :is_activated, except: [:login, :create_login, :logout, :index,:new, :create, :verify]
+	
 	def index 
 	end
 	
@@ -58,7 +59,12 @@ class UsersController < ApplicationController
 	
 	def messages
 	end
+	def verify
+		if User.find(session[:user_id]).is_activated == true
 
+			redirect_to '/dashboard'
+		end
+	end
 	def logout
 		session[:user_id] = nil
 		session[:is_type] = nil
@@ -77,6 +83,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		@user.password_digest = BCrypt::Password.create(@user.password)
+		@user.is_activated = false;
 		respond_to do |format|
 			if @user.save
 				if @user.type == "tutee"
@@ -113,7 +120,7 @@ class UsersController < ApplicationController
 
 		def user_params
 			params.require(:user).permit(
-				:email_address, :password, :type, :contact_number,
+				:email_address, :password, :type, :contact_number, :is_activated,
 				tutees_attributes: [:first_name, :last_name, :profile_picture, :birthdate, :address, :school_id, :matriculation_form],
 				tutors_attributes: [:first_name, :last_name, :profile_picture, :birthdate, :address, :occupation, :skill_category, :certification]
 			)
