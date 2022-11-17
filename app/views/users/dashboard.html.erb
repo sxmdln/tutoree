@@ -24,21 +24,29 @@
           </div> 
         </div>
         <div class="container py-2">
-          <div class="row">   
+          <div class="row">
               <% @posts.each do |post| %>
-                <div class="col m-2 p-2" style="color:white; border:1px solid white;">
-                  <div class="row">
-                    <div class="col-7">
-                      <%= post.post_name %> <p>
-                      <%= post.skill_category %> 
-                      <%= post.post_price %>
-                    </div>
-                    <div class="col-3">
-                      <button class="btn btn-primary">Apply</button>
+                <% if post.is_accepted == false %>
+                  <div class="col m-2 p-2" style="color:white; border:1px solid white;">
+                    <div class="row">
+                      <div class="col-7">
+                          <%= post.post_name %> <p>
+                          <%= post.skill_category %> 
+                          <%= post.post_price %>
+                      </div>
+                      <div class="col-3">
+                        <%= link_to "Apply", apply_post_path_url(post.id), 
+                          class: "btn btn-primary float-right",
+                          data: {
+                            turbo_method: :get,
+                            turbo_confirm: "Are you sure to apply #{post.post_name}?"
+                          }
+                        %>
+                      </div>
                     </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              <%end%>
           </div>
         </div>
     </main>   
