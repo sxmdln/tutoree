@@ -37,17 +37,11 @@ class UsersController < ApplicationController
 			redirect_to '/login', notice: 'user password does not match'
             #render json: {msg: 'Incorrect Password', user: user.password_digest }, status: :unprocessable_entity
         end
-
 	end
+	
 	def dashboard
         @posts = Post.all
     end
-	# def check_user
-	# 	if @user.type == "tutee"
-	# 		redirect_to action: 'dashboard'
-	# 	elsif @user.type == "tutor"
-	# 	end
-	# end
 
 	# def dashboard
 	# 	# tutee can only post jobs
@@ -57,14 +51,13 @@ class UsersController < ApplicationController
 	# 	end
 	# end
 	
-	def messages
-	end
 	def verify
 		if User.find(session[:user_id]).is_activated == true
 
 			redirect_to '/dashboard'
 		end
 	end
+
 	def logout
 		session[:user_id] = nil
 		session[:is_type] = nil
