@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
     def create_post
 		@post = Post.new(post_params, user_id: @post.user._id)
+        @post.is_accepted = false;
 
         respond_to do |format|
             if @post.save
@@ -27,14 +28,18 @@ class PostsController < ApplicationController
         end
 	end
 
-    private
-        def set_post
-            @post = Post.find(params[:id])
-        end
+    def apply
+        apply_post = Post.find(params[:id])
 
+        if apply_post.is_accepted == false then
+            apply_post.is_accepted = true;
+        end
+        apply_post.save
+        redirect_to "/dashboard"
+    end
+
+    private
         def post_params
             params.require(:post).permit(:post_name, :post_price, :skill_category, :is_accepted, :date_posted)
         end
-    end
-
 end
