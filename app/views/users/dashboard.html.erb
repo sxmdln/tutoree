@@ -27,16 +27,16 @@
           <div class="row">
               <% @posts.each do |post| %>
                 <% if post.is_accepted == false %>
-                  <div class="col m-2 p-2" style="color:white; border:1px solid white;">
+                  <div class="col-12 m-1  p-1" style="color:white; border-bottom:2px solid white;">
                     <div class="row">
-                      <div class="col-7">
-                          <%= post.post_name %> <p>
+                      <div class="col">
+                          <%= post.post_name %> </p>
                           <%= post.skill_category %> 
                           <%= post.post_price %>
-                      </div>
-                      <div class="col-3">
-                        <%= link_to "Apply", apply_post_path_url(post.id), 
-                          class: "btn btn-primary float-right",
+                          
+                          </p>
+                          <%= link_to "Apply", apply_post_path_url(post.id), 
+                          class: "btn btn-outline-primary float-right",
                           data: {
                             turbo_method: :get,
                             turbo_confirm: "Are you sure to apply #{post.post_name}?"
@@ -44,7 +44,7 @@
                         %>
                       </div>
                     </div>
-                  </div>
+                  </div>                 
                 <% end %>
               <%end%>
           </div>
@@ -62,11 +62,6 @@
           <div class="col">SUBJECT: Sample</div>
           <div class="col">RATE: $24/hr </div>
         </div>
-        <div class ="row"> 
-          <div class="col">DURATION</div>
-          <div class="col">Starts at: September 26, 2022</div>
-          <div class="col">Ends at: September 27, 2022</div>
-        </div>
       </div>
       
     </main>
@@ -82,7 +77,7 @@
       </div>
     <div class="modal-body">
       <!-- RENDER HERE -->
-      <%= render 'tutees/postform', post: @post %>
+      <%= render 'tutees/new', post: @post %>
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
