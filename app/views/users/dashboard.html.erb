@@ -18,7 +18,7 @@
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
               <% if User.find(session[:user_id]).type == 'tutee' %>
-                <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#postsModal">Create</button>
+                <a class="btn btn-success" href='/post/new'>Create</a>
               <%end%>
             </div>
           </div> 
@@ -67,22 +67,3 @@
     </main>
   </div>
 </div>
-<!-- modal -->
-<div class="modal fade" id="postsModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-      
-        <h5 class="modal-title" id="postsModalLabel">Create a Post</h5>
-      </div>
-    <div class="modal-body">
-      <!-- RENDER HERE -->
-      <%= render 'tutees/new', post: @post %>
-      </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-</div>
-<!-- end of modal -->
