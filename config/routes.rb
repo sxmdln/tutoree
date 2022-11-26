@@ -11,13 +11,13 @@ Rails.application.routes.draw do
 	get "/new", to: "users#new"
 	get "/verify", to: "users#verify"
 	get "/dashboard", to: "users#dashboard" # dashboard
+	get "/post/new", to: "posts#new"
 	get "/posts", to: "posts#create_post"
 	get "/profile/:id", to: "users#profile" # profile page
-	get "/messages", to: "users#messages" # messages
-	get "/post/new", to: "posts#new"
 	get "/logout",to: "users#logout" #logout
 	post "/dashboard", to: "users#dashboard"
 	post "/posts", to: "posts#create_post" #create post
+	post "/apply/:id", to: "posts#apply" #apply post
 	post "/login", to: "users#create_login" #auth
 	
 end
