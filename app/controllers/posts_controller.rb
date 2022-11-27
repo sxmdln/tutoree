@@ -28,6 +28,7 @@ class PostsController < ApplicationController
             end
         end
 	end
+    
 
     def apply
         apply_post = Post.find(params[:id])
@@ -36,8 +37,10 @@ class PostsController < ApplicationController
         if apply_post.is_accepted == false then
             apply_post.is_accepted = true
             @accepted_tutee.tutee_id = apply_post.author_id
+            @accepted_tutee.tutor_id = session[:user_id]
             @accepted_tutee.name = apply_post.post_name
             @accepted_tutee.price = apply_post.post_price
+            @accepted_tutee.date_duration = apply_post.date_duration
         end
         apply_post.save
         respond_to do |format|
@@ -50,9 +53,8 @@ class PostsController < ApplicationController
             end
         end
     end
-
     private
         def post_params
-            params.require(:post).permit(:author_id, :post_name, :post_price, :skill_category, :is_accepted, :date_posted)
+            params.require(:post).permit(:author_id, :post_name, :post_price, :skill_category, :is_accepted, :date_posted, :date_duration)
         end
 end

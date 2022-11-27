@@ -41,6 +41,7 @@ class UsersController < ApplicationController
 	
 	def dashboard
         @posts = Post.all
+		@accepted_tutees = AcceptedTutee.all
     end
 
 	# def dashboard

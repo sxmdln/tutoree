@@ -26,22 +26,24 @@
         <div class="container py-2">
           <div class="row">
               <% @posts.each do |post| %>
-                <% if post.is_accepted == false %>
+                <% if post.is_accepted == false && post.date_duration > Time.zone.now.to_date %>
                   <div class="col-12 m-1  p-1" style="color:white; border-bottom:2px solid white;">
                     <div class="row">
                       <div class="col">
-                          <%= post.post_name %> </p>
-                          <%= post.skill_category %> 
-                          <%= post.post_price %>
-                          
+                          TITLE: <%= post.post_name %></p>
+                          AUTHOR: <a href="/profile/<%=post.author_id%>"><%= User.find(post.author_id).email_address %> </a></p>
+                          CATEGORY: <%= post.skill_category %> </p>
+                          PRICE: <%= post.post_price %> </p>
+                          UNTIL: <%= post.date_duration %> </p>
                           </p>
-                          <%= link_to "Apply", apply_post_path_url(post.id), 
-                          class: "btn btn-outline-primary float-right",
-                          data: {
-                            turbo_method: :get,
-                            turbo_confirm: "Are you sure to apply #{post.post_name}?"
-                          }
-                        %>
+                          <% if User.find(session[:user_id]).type != 'tutee' %>
+                            <%= link_to "Apply", apply_post_path_url(post.id), 
+                            class: "btn btn-outline-primary float-right",
+                            data: {
+                              turbo_method: :get,
+                              turbo_confirm: "Are you sure to apply #{post.post_name}?"
+                            }%>
+                          <%end%>
                       </div>
                     </div>
                   </div>                 
@@ -52,18 +54,43 @@
     </main>   
     <main class="col-md-3 col-lg-3 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
-        <h1 class="h2" style="color:white;">Current <% if User.find(session[:user_id]).type == "tutee" %>Tutor<% elsif User.find(session[:user_id]).type == "tutor" %>Tutee <%end%></h1>
+        <h1 class="h2" style="color:white;"> <% if User.find(session[:user_id]).type == "tutee" %>Tutor/s<% elsif User.find(session[:user_id]).type == "tutor" %>Tutee/s <%end%></h1>
       </div>
-      <div class="container py-2" style="color:white">
-        <div class="row">
-          Name: SAMPLE User
-        </div>  
-        <div class ="row"> 
-          <div class="col">SUBJECT: Sample</div>
-          <div class="col">RATE: $24/hr </div>
-        </div>
-      </div>
+      <% @accepted_tutees.each do |accepted| %>
       
+        <% if (accepted.tutor_id == User.find(session[:user_id])._id || accepted.tutee_id == User.find(session[:user_id])._id) && accepted.date_duration > Time.zone.now.to_date %>
+          <div class="container py-2 px-4" style="color:white; outline:1px solid white;">
+            <div class="row">
+              <% if accepted.tutor_id == User.find(session[:user_id])._id %>
+                <span>TUTEE:<a href="profile/<%= accepted.tutee_id %>"> <%= User.find(accepted.tutee_id).email_address %> </a></span>
+              <%elsif accepted.tutee_id == User.find(session[:user_id])._id %>
+                <span>TUTOR:<a href="profile/<%= accepted.tutor_id %>"> <%= User.find(accepted.tutor_id).email_address %></a></span>
+              <%end%>
+            </div>  
+            <div class ="row"> 
+              <div class="col">Skill Category:<%= accepted.name %></div>
+              <div class="col">RATE: <%= accepted.price %>/hr </div>
+              <div class="col">UNTIL: <%= accepted.date_duration %> </div>
+            </div>
+          </div>
+        <% elsif (accepted.tutor_id == User.find(session[:user_id])._id || accepted.tutee_id == User.find(session[:user_id])._id) && accepted.date_duration < Time.zone.now.to_date %>
+          <div class="container py-2 px-4" style="color:white; outline:1px solid white;">
+            <div class="row">
+              <% if accepted.tutor_id == User.find(session[:user_id])._id %>
+                <span>TUTEE:<a href="profile/<%= accepted.tutee_id %>"> <%= User.find(accepted.tutee_id).email_address %> </a></span>
+              <%elsif accepted.tutee_id == User.find(session[:user_id])._id %>
+                <span>TUTOR:<a href="profile/<%= accepted.tutor_id %>"> <%= User.find(accepted.tutor_id).email_address %></a></span>
+              <%end%>
+            </div>  
+            <div class ="row"> 
+              <div class="col">Skill Category:<%= accepted.name %></div>
+              <div class="col">RATE: <%= accepted.price %>/hr </div>
+              <div class="col">ENDED AT: <%= accepted.date_duration %> </div>
+            </div>
+          </div>
+      <%end%>
+        
+      <%end%>
     </main>
   </div>
 </div>

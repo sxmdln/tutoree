@@ -26,8 +26,9 @@
                             <strong>NAME:</strong>
                             <% if @user.type == 'tutor' %>
                                 <%= @user.tutors.first_name %> <%= @user.tutors.last_name %> 
+
                             <% elsif @user.type == 'tutee' %>
-                                <%= @user.tutees.first_name %> <%= @user.tutees.last_name %> 
+                                <%= @user.tutees.first_name %> <%= @user.tutees.last_name %>
                             <%end%>
                         </p>
                         <p>

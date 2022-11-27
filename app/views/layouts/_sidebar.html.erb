@@ -34,6 +34,9 @@
 </style>
 <ul class="nav flex-column">
     <li style="color:white">
+        Today is <%= Time.zone.now.to_date %>
+    </li></p>
+    <li style="color:white">
         Welcome, <%= User.find(session[:user_id]).email_address %>!
     </li>
     <li class="nav-item">
