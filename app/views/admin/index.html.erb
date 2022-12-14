@@ -1,0 +1,45 @@
+<header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Tutoree</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+      <div class="position-sticky pt-3">
+        <%= render 'layouts/sidebar' %>
+      </div>
+    </nav>
+    <main class="col px-md-2">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
+        <h1 class="h2" style="color:white;">Requesting for Approval</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+            </div>
+          </div> 
+        </div>
+        <div class="container py-2">
+          <div class="row">   
+              <% @users.each do |user| %>
+                <% if user.is_activated != true %>
+                  <div class="col m-2 p-2" style="color:white; border:1px solid white;">
+                    <div class="row">
+                      <div class="col-5">
+                        <%= user.email_address %>
+                        <%= user.type %>
+                        <%= user.contact_number%>
+                      </div>
+                      <div class="col-2">
+                        <a class="btn btn-primary" href='/profile/<%= user._id%>'>Show</a>
+                      </div>
+                    </div>
+                  </div>
+                <%end %>
+              <% end %>
+          </div>
+        </div>
+    </main>
+  </div>
+</div>

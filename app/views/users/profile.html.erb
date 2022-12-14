@@ -33,8 +33,12 @@
                         </p>
                         <p>
                             <strong>Contact:</strong>
+                            <%= @user.email_address%>
                             <%= @user.contact_number %>
                         </p>
+                        <% if @user.is_activated == false &&  User.find(session[:user_id]).type == "admin"%>
+                            <a href="<%= @user._id %>/approve" class="btn btn-outline-primary">Approve</a>
+                        <%end%>
                     </div>
                 </div>
             </div>
