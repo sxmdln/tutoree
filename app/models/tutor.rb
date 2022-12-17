@@ -11,11 +11,7 @@ class Tutor
   field :skill_category, type: String
   field :certification, type: String
   field :price_per_hour, type: BigDecimal
-  field :average_rating, type: BigDecimal
-  field :number_of_reviews, type: Integer
-  field :number_of_tutees, type: Integer
   field :is_active, type: Mongoid::Boolean
-  field :payment_info, type: String
 
   belongs_to :user
   has_one :accepted_tutee

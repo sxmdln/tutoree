@@ -9,9 +9,7 @@ class Tutee
   field :address, type: String
   field :school_id, type: String
   field :matriculation_form, type: String
-  field :average_rating, type: BigDecimal
   field :is_active, type: Mongoid::Boolean
-  field :payment_info, type: String
 
   belongs_to :user
   has_one :accepted_tutee
